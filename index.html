@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OS Visualizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px;
+            color: white;
+            font-size: 1.5rem;
+        }
+        .container {
+            padding: 50px 20px;
+            color: #333;
+        }
+        .section {
+            background: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">OS Visualizer</div>
+    
+    <div class="container">
+        <h1>Welcome to OS Visualizer</h1>
+        <p>Explore fundamental Operating System concepts through interactive visualizations.</p>
+        
+        <div class="section">
+            <h2>Producer-Consumer Problem</h2>
+            <p>Visualize how multiple processes share resources using a buffer with producer and consumer synchronization.</p>
+            <button class="btn" onclick="location.href='producerconsumer/prod.html'">Learn More</button>
+        </div>
+        
+        <div class="section">
+            <h2>Memory Management</h2>
+            <p>Understand how memory allocation strategies such as First Fit, Best Fit, and Worst Fit work.</p>
+            <button class="btn" onclick="location.href='memorymanagement/index.html'">Learn More</button>
+        </div>
+        
+        <div class="section">
+            <h2>Disk Scheduling</h2>
+            <p>Analyze disk scheduling algorithms like C-SCAN, SCAN, and LOOK to optimize disk performance.</p>
+            <button class="btn" onclick="location.href='disk-scheduling.html'">Learn More</button>
+        </div>
+    </div>
+    
+    <div class="footer">&copy; 2025 OS Visualizer | All Rights Reserved</div>
+    <script>
+        
+    </script>
+</body>
+</html>
+
+</body>
+</html>

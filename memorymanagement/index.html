@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+        <h1>Memory Management Simulation</h1>
+        <h4>(First-fit,best-fit,worst-fit.)</h4>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti qui ducimus voluptates accusantium mollitia distinctio id vitae, reiciendis consectetur earum voluptatibus facere, sunt quisquam doloremque cupiditate. Id voluptatibus voluptatum quam.</p>
+    </div>
+    <div class="inp">
+
+      <input id="memo" type="text" placeholder="eg. 100,400,300...">
+      <button>Set Memory</button>
+      <input type="text" placeholder="eg. 150,70,900..." id="size">
+      <button>Page Sizes</button>
+      <div class="fit">
+          <label for="algo">Choose algorithm:</label>
+          <select  id="algo">
+           <option value="best-fit">best-fit</option>
+           <option value="First-fit">First-fit </option>
+           <option value="worst-fit">Worst-fit</option>
+           
+          </select>
+      </div>
+    </div>
+    <div class="visuals">
+      <div class="txt">
+
+      </div>
+      <div class="block">
+
+      </div>
+    </div>
+  </div> 
+  <script>src="script.js"</script>
+</body>
+</html>
