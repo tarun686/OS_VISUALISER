@@ -47,6 +47,14 @@ function display() {
         sequence = clook([...requests], headStart);
         break;
     }
+    
+      let seekTime = 0;
+      for (let i = 1; i < sequence.length; i++) {
+        seekTime += Math.abs(sequence[i] - sequence[i - 1]);
+      }
+
+  document.getElementById('results').innerHTML = `Seek Sequence: ${sequence.join(" → ")}<br>Total Seek Time: <strong>${seekTime}</strong> cylinders`;
+
   
     visualize(sequence, maxDiskSize);
   }
