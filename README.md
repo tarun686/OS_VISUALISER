@@ -14,8 +14,11 @@ Modular file structure: each concept has its own folder (e.g., Disk_Scheduling, 
 🛠️ Technical Stack
 
 Area :	Technologies
+
 Frontend	: HTML5, CSS3, JavaScript (ES6+)
+
 Visualization	: CanvasJS (for disk scheduling); pure JS + CSS for others
+
 Styling	Custom : CSS + Bootstrap icons
 
 
