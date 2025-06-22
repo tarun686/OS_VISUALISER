@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producer-Consumer Simulation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="boxx">
+            <h1>Producer-Consumer Simulation</h1>
+            <p>The Producer-Consumer problem is a classic synchronization issue in operating systems. It involves two
+                types of processes: producers, which generate data, and consumers, which process that data. Both share a
+                common buffer. The challenge is to ensure that the producer doesn’t add data to a full buffer and the
+                consumer doesn’t remove data from an empty buffer while avoiding conflicts when accessing the buffer.
+            </p>
+        </div>
+
+        <h3>Simulating how multiple processes share resources using a buffer.</h3>
+
+        <div class="controls">
+            <button onclick="startProducer()"><i class="fas fa-play"></i> Start Producer</button>
+            <button style="background-color: red;" onclick="stopProducer()"><i class="fas fa-stop"></i> Stop
+                Producer</button>
+            <button onclick="startConsumer()"><i class="fas fa-play"></i> Start Consumer</button>
+            <button style="background-color: red;" onclick="stopConsumer()"><i class="fas fa-stop"></i> Stop
+                Consumer</button>
+            <button style="background-color: black;" onclick="stopSimulation()"><i class="fas fa-power-off"></i> Stop
+                Simulation</button>
+        </div>
+
+        <div class="buffer-container">
+            <h2>Buffer</h2>
+            <div id="buffer" class="buffer"></div>
+        </div>
+
+        <p id="statusMessage" class="status-message">Initializing...</p>
+    </div>
+    <div class="container">
+        <div class="info">
+            <h2>Producer-Consumer Problem</h2>
+            <p>The Producer-Consumer problem is a classic synchronization scenario in operating systems. It involves two types of processes:</p>
+            <ul>
+              <li><strong>Producer</strong> – generates and adds items to a shared buffer.</li>
+              <li><strong>Consumer</strong> – removes and processes items from that shared buffer.</li>
+            </ul>
+            <p>The goal is to coordinate these processes to ensure that:</p>
+            <ul>
+              <li>The producer does not add to a full buffer.</li>
+              <li>The consumer does not remove from an empty buffer.</li>
+              <li>They do not access the buffer simultaneously to avoid race conditions.</li>
+            </ul>
+          
+            <h2>Algorithm Overview</h2>
+            <p>The synchronization is typically managed using semaphores or mutexes to ensure mutual exclusion and proper signaling between the producer and consumer.</p>
+          
+            <h4>Pseudocode:</h4>
+            <pre>
+          Initialize:
+              mutex = 1
+              full = 0
+              empty = buffer_size
+          
+          Producer:
+              wait(empty)
+              wait(mutex)
+                  produce_item()
+                  add_item_to_buffer()
+              signal(mutex)
+              signal(full)
+          
+          Consumer:
+              wait(full)
+              wait(mutex)
+                  remove_item_from_buffer()
+                  consume_item()
+              signal(mutex)
+              signal(empty)
+            </pre>
+          
+            <p>This ensures that the producer waits if the buffer is full, and the consumer waits if the buffer is empty. Mutual exclusion guarantees that only one process accesses the buffer at a time.</p>
+          </div>          
+    </div>
+    <div class="end">
+        <p>Want to learn more. <a style="color:yellow;" href="https://www.geeksforgeeks.org/producer-consumer-problem-using-semaphores-set-1/">Click here!</a></p>
+    </div>
+ 
+    <script src="script.js"></script>
+
+</body>
+
+</html>

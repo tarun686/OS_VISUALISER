@@ -1,0 +1,95 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, #1e3c72, #2a5298);
+    color: white;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    margin-bottom: 30px;
+}
+
+.box {
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+}
+
+.inp {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: start;
+}
+input 
+{
+    padding: 10px;
+    width: 100%;
+    border-radius: 50px;
+    margin: 10px 0;
+    border: none;
+    
+}
+ select {
+    padding: 10px;
+    border-radius: 50px;
+    width: 100%;
+    margin: 10px 0;
+    border: none;
+}
+
+button {
+    padding: 10px;
+    border-radius: 50px;
+    background-color: yellow;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #ffd700;
+}
+
+.visuals {
+    padding: 10px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#diskCanvas {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+.info {
+    text-align: start;
+    padding: 10px;
+    background-color: rgba(209, 197, 197, 0.216);
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+th{
+    color: black;
+    background-color: skyblue;
+}
+
+#results {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+    color: red;
+}

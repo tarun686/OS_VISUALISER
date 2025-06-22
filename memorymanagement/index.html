@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+        <h1>Memory Management Simulation</h1>
+        <h4>(First-fit,best-fit,worst-fit.)</h4>
+        <p>Memory management mostly involves management of main memory. In a multiprogramming computer, the Operating System resides in a part of the main memory, and the rest is used by multiple processes. The task of subdividing the memory among different processes is called Memory Management. Memory management is a method in the operating system to manage operations between main memory and disk during process execution. The main aim of memory management is to achieve efficient utilization of memory. </p>
+    </div>
+    <div class="inp">
+
+      <input id="memo" type="text" placeholder="eg. 100 400 300...900">
+      <button onclick="setmemory()">Set Memory</button>
+      <input type="text" placeholder="eg. 150 70 900..." id="size">
+      <button onclick="applyfit()">Page Sizes</button>
+      <div class="fit">
+          <label for="algo">Choose algorithm:</label>
+          <select  id="algo">
+           <option value="best-fit">best-fit</option>
+           <option value="First-fit">First-fit </option>
+           <option value="worst-fit">Worst-fit</option>
+           
+          </select>
+          <div id="txt">
+          </div>
+      </div>
+    </div>
+    <div class="visuals">
+      <div class="block">
+        <div class="block1">
+          <h3>Memory Blocks</h3>
+  
+        </div>
+
+        <div class="block2">
+          <h3>Page Allocation</h3>
+        </div>
+
+      </div>
+      
+    </div>
+  </div> 
+  <div class="container">
+    <div class="info">
+      <h2>What is Memory Allocation?</h2>
+      <p>Memory allocation is the process of assigning portions of memory to programs and processes. It plays a vital role in the operating system to ensure efficient use of RAM and smooth multitasking. In a multiprogramming system, memory management decides how to assign available memory blocks to processes.</p>
+    
+      <h2>Memory Allocation Strategies</h2>
+      <p>There are three primary memory allocation techniques used to allocate memory blocks dynamically:</p>
+      <ul>
+        <li><strong>First Fit</strong>: Allocates the first available memory block that is large enough.</li>
+        <li><strong>Best Fit</strong>: Allocates the smallest suitable memory block that can hold the process.</li>
+        <li><strong>Worst Fit</strong>: Allocates the largest available block to reduce fragmentation.</li>
+      </ul>
+    
+      <h2>First Fit Algorithm</h2>
+      <p>The First Fit algorithm allocates the <strong>first memory block</strong> that is large enough to accommodate the process. It scans memory from the beginning and assigns memory as soon as it finds a suitable block.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Start from the beginning of the memory block list.</li>
+        <li>Find the first block that is greater than or equal to the size of the process.</li>
+        <li>Allocate the process to that block.</li>
+        <li>If no block is large enough, the process is not allocated.</li>
+      </ol>
+    
+      <h2>Best Fit Algorithm</h2>
+      <p>The Best Fit algorithm searches for the <strong>smallest free block</strong> that fits the process. It aims to reduce internal fragmentation by not wasting large blocks on small processes.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Scan all memory blocks.</li>
+        <li>Find the smallest block that fits the process.</li>
+        <li>Allocate the process to that block.</li>
+        <li>If no suitable block is found, the process remains unallocated.</li>
+      </ol>
+    
+      <h2>Worst Fit Algorithm</h2>
+      <p>The Worst Fit algorithm looks for the <strong>largest free block</strong> and assigns it to the process. It tries to keep medium and small blocks available for future processes by using up the largest first.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Scan all memory blocks.</li>
+        <li>Find the largest block that can fit the process.</li>
+        <li>Allocate the process to that block.</li>
+        <li>If no block is large enough, the process is not allocated.</li>
+      </ol>
+    
+      <h2>Comparison Table</h2>
+      <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+          <th>Feature</th>
+          <th>First Fit</th>
+          <th>Best Fit</th>
+          <th>Worst Fit</th>
+        </tr>
+        <tr>
+          <td>Strategy</td>
+          <td>First block that fits</td>
+          <td>Smallest suitable block</td>
+          <td>Largest suitable block</td>
+        </tr>
+        <tr>
+          <td>Speed</td>
+          <td>Fast</td>
+          <td>Slow</td>
+          <td>Slow</td>
+        </tr>
+        <tr>
+          <td>Internal Fragmentation</td>
+          <td>Moderate</td>
+          <td>Low</td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td>External Fragmentation</td>
+          <td>High</td>
+          <td>High</td>
+          <td>Moderate</td>
+        </tr>
+        <tr>
+          <td>Efficiency</td>
+          <td>Good for general use</td>
+          <td>Efficient space usage</td>
+          <td>Keeps large space free</td>
+        </tr>
+      </table>
+    </div>    
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

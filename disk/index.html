@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Disk Scheduling Algorithm Simulator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+      <h1>Disk Scheduling Algorithm Simulator</h1>
+      <h4>(FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK)</h4>
+      <p>Disk scheduling is the process of determining the order in which disk I/O requests are serviced. These algorithms help improve efficiency and reduce seek time by determining the optimal sequence of disk accesses.</p>
+    </div>
+
+    <div class="inp">
+      <label for="algorithm">Select Algorithm:</label>
+      <select id="algorithm">
+        <option value="select">Select an option</option>
+        <option value="fcfs">FCFS</option>
+        <option value="sstf">SSTF</option>
+        <option value="scan">SCAN</option>
+        <option value="cscan">C-SCAN</option>
+        <option value="look">LOOK</option>
+        <option value="clook">C-LOOK</option>
+      </select>
+
+      <label class="input" for="requests">Enter Disk Requests (comma-separated):</label>
+      <input type="text" id="requests" placeholder="98, 183, 37, 122, 14, 124, 65, 67" />
+
+      <label class="input" for="maxDiskSize">Max Disk Size:</label>
+      <input type="number" id="maxDiskSize" value="199" />
+
+      <label class="input" for="headStart">Initial Head Start Position:</label>
+      <input type="number" id="headStart" value="53" />
+
+      <button onclick="display()" id="simulateBtn">Simulate</button>
+    </div>
+    <div id="results"></div>
+    <div class="visuals">
+
+      <div id="diskCanvasContainer" style="height: 400px; width: 100%;"></div>
+    </div>
+
+    
+  </div>
+  <div class="container">
+    <div class="info">
+      <h2>What is Disk Scheduling?</h2>
+      <p>Disk scheduling is the method by which the operating system decides the order in which I/O requests will be processed by the disk controller. It plays a crucial role in minimizing seek time and improving disk performance.</p>
+      
+      <h2>Common Disk Scheduling Algorithms</h2>
+      <p>There are several algorithms used to optimize the order of servicing disk requests:</p>
+      <ul>
+        <li><strong>FCFS (First-Come-First-Serve)</strong></li>
+        <li><strong>SSTF (Shortest Seek Time First)</strong></li>
+        <li><strong>SCAN</strong></li>
+        <li><strong>C-SCAN (Circular SCAN)</strong></li>
+        <li><strong>LOOK</strong></li>
+        <li><strong>C-LOOK (Circular LOOK)</strong></li>
+      </ul>
+  
+      <h2>FCFS (First-Come-First-Serve)</h2>
+      <p>FCFS processes disk requests in the order they arrive without reordering them. It is simple but may result in long wait times if requests are far apart.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Serve requests in the order they are received.</li>
+        <li>No optimization is performed.</li>
+        <li>Easy to implement but inefficient for scattered requests.</li>
+      </ol>
+  
+      <h2>SSTF (Shortest Seek Time First)</h2>
+      <p>SSTF selects the disk request that is closest to the current head position, reducing seek time but possibly causing starvation.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Calculate the distance of all requests from the current head.</li>
+        <li>Pick the request with the smallest distance.</li>
+        <li>Repeat for the remaining requests.</li>
+      </ol>
+  
+      <h2>SCAN (Elevator Algorithm)</h2>
+      <p>The disk arm moves in one direction (like an elevator), serving all requests until it reaches the end, then reverses direction.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Move the head towards one end, serving requests in order.</li>
+        <li>Once the end is reached, reverse direction.</li>
+        <li>Repeat this back-and-forth motion.</li>
+      </ol>
+  
+      <h2>C-SCAN (Circular SCAN)</h2>
+      <p>Like SCAN, but instead of reversing, the head jumps back to the beginning and continues in the same direction. This provides a more uniform wait time.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Move head in one direction, serving requests.</li>
+        <li>On reaching the end, jump back to the beginning.</li>
+        <li>Continue serving in the same direction.</li>
+      </ol>
+  
+      <h2>LOOK Algorithm</h2>
+      <p>Similar to SCAN, but instead of going to the end of the disk, the head reverses direction when there are no more requests in that direction.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Serve requests in one direction until none remain.</li>
+        <li>Reverse and continue.</li>
+        <li>Avoids unnecessary movement to disk edges.</li>
+      </ol>
+  
+      <h2>C-LOOK Algorithm</h2>
+      <p>Similar to C-SCAN, but the head only jumps back to the lowest request after serving the highest one.</p>
+      <h4>Steps:</h4>
+      <ol>
+        <li>Serve in one direction only.</li>
+        <li>Jump to the beginning request after finishing the last one.</li>
+        <li>Continue in the same direction.</li>
+      </ol>
+  
+      <h2>Comparison Table</h2>
+      <table border="1" cellspacing="0" cellpadding="10">
+        <tr>
+          <th>Algorithm</th>
+          <th>Strategy</th>
+          <th>Performance</th>
+          <th>Starvation</th>
+          <th>Direction Handling</th>
+        </tr>
+        <tr>
+          <td>FCFS</td>
+          <td>First come, first served</td>
+          <td>Simple but inefficient</td>
+          <td>No</td>
+          <td>No control</td>
+        </tr>
+        <tr>
+          <td>SSTF</td>
+          <td>Nearest request first</td>
+          <td>Better than FCFS</td>
+          <td>Yes</td>
+          <td>Adaptive</td>
+        </tr>
+        <tr>
+          <td>SCAN</td>
+          <td>Up then down (like elevator)</td>
+          <td>Fairly efficient</td>
+          <td>Less likely</td>
+          <td>Reverses at ends</td>
+        </tr>
+        <tr>
+          <td>C-SCAN</td>
+          <td>One-way, circular</td>
+          <td>Uniform wait time</td>
+          <td>No</td>
+          <td>Wraps around</td>
+        </tr>
+        <tr>
+          <td>LOOK</td>
+          <td>Up/down as needed</td>
+          <td>Efficient</td>
+          <td>Less likely</td>
+          <td>Reverses when done</td>
+        </tr>
+        <tr>
+          <td>C-LOOK</td>
+          <td>Circular, but skips ends</td>
+          <td>Very efficient</td>
+          <td>No</td>
+          <td>Jumps to start</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+
+  <script src="script.js"></script>
+  <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+</body>
+</html>
